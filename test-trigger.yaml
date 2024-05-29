@@ -1,0 +1,15 @@
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: telegram-ping-trigger
+  namespace: testk
+spec:
+  broker: default
+  filter:
+    attributes:
+      type: myData
+  subscriber:
+    ref:
+      apiVersion: camel.apache.org/v1
+      kind: Integration
+      name: telegram-sink
